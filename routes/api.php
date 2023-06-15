@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookConroller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/books', [BookConroller::class, 'index']);
+Route::get('/books/{id}', [BookConroller::class, 'show']);
+Route::post('/books', [BookConroller::class, 'store']);
+Route::put('/books/{id}', [BookConroller::class, 'update']);
+Route::delete('/books/{id}', [BookConroller::class, 'destroy']);
